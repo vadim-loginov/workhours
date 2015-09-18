@@ -1,0 +1,41 @@
+* {
+    box-sizing: border-box;
+}
+
+.total {
+    font-size: 3rem;
+}
+
+.coding-animation {
+    height: 80px;
+}
+
+.controls {
+    height: 85px;
+    position: relative;
+    text-align: center;
+}
+
+.controls button {
+    border-radius: 20px;
+    float: left;
+    margin-right: 5px;
+}
+
+.btn:focus,
+.btn:active {
+    outline: none;
+}
+
+.alarm {
+    width: 298px;
+    height: 298px;
+    position: absolute;
+    bottom: -298px;
+    left: 50%;
+    margin-left: -149px;
+}
+
+.opaque {
+    opacity: 0;
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <title>Сайт</title>
+    <meta charset="utf-8">
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body ng-app="workhours" ng-controller="mainCtrl" ng-strict-di>
+    <div class="container">
+        <div class="row">
+            <br>
+            <div class="controls">
+                <button type="button" class="btn btn-success btn-lg" ng-click="startPeriod()" title="Старт">
+                    <span class="glyphicon glyphicon-play"></span>
+                </button>
+                <button type="button" class="btn btn-danger btn-lg" ng-click="stopPeriod()" title="Стоп">
+                    <span class="glyphicon glyphicon-stop"></span>
+                </button>
+                <button type="button" class="btn btn-default btn-lg" ng-click="toggleSound()" title="Включить/отключить звук">
+                    <span class="glyphicon" ng-class="{'glyphicon-volume-up': soundOn, 'glyphicon-volume-off': !soundOn}"></span>
+                </button>
+                <button type="button" class="btn btn-default btn-lg" ng-click="clearStorage()" title="Обнулить всё">
+                    <span class="glyphicon glyphicon-refresh"></span>
+                </button>
+
+                <span class="total" ng-bind="getDayDuration()"></span>
+                <img src="img/programmer.gif" class="pull-right coding-animation" alt="gif animation" ng-class="{opaque: isPeriodClosed}">
+                <img src="img/alarm.gif" alt="alarm clock" class="alarm" ng-show="alarmActive">
+            </div>
+            <br>
+            <table class="table table-striped">
+                <tr ng-repeat="period in periods">
+                    <td class="col-xs-3" ng-bind="period.start"></td>
+                    <td class="col-xs-3" ng-bind="period.end"></td>
+                    <td class="col-xs-3">
+                        <span ng-bind="period.duration.pretty"></span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <script src='http://code.jquery.com/jquery-1.11.3.min.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.5/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+    <script src="js/app/workhours.js"></script>
+</body>
+</html>
